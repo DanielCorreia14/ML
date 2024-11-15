@@ -37,14 +37,13 @@ print("Formato de X:", X.shape)
 print("Formato de y:", y.shape)
 
 # Agora, X é de dimensão (n_amostras, n_features)
-# Mas o MLPRegressor exige que X seja 2D, então vamos garantir que X seja uma matriz 2D
 X = X.reshape(X.shape[0], -1)  # Achata qualquer dimensão extra, resultando em (n_amostras, n_features)
 
 # Visualização do dataset janelado
 plt.plot(generator[0][0][:, 0])  # Exemplo de como a janela aparece
 plt.title("Primeira Janela do Dataset")
-plt.savefig("primeira_janela.png")  # Salva o gráfico como um arquivo PNG
-plt.close()  # Fecha a figura após salvar
+plt.savefig("primeira_janela.png")  
+plt.close()  
 
 # Separação do conjunto de treinamento e de teste
 train_size = int(len(X) * 0.8)
@@ -75,7 +74,7 @@ plt.plot(model.loss_curve_)
 plt.title("Erro RMS durante o Treinamento")
 plt.xlabel("Iterações")
 plt.ylabel("Erro RMS")
-plt.savefig("curva_perda.png")  # Salva o gráfico como um arquivo PNG
+plt.savefig("curva_perda.png")  
 plt.close()
 
 # Plotagem dos dados de treinamento
@@ -85,17 +84,17 @@ plt.title("Dados de Treinamento")
 plt.xlabel("Amostras")
 plt.ylabel("Valores Normalizados")
 plt.legend()
-plt.savefig("dados_treinamento.png")  # Salva o gráfico como um arquivo PNG
+plt.savefig("dados_treinamento.png")  
 plt.close()
 
 # Gráfico de Resíduos (erro entre previsão e valor real)
-residuals = y_test - predictions_test  # Corrigido: Usar 'predictions_test' ao invés de 'pr'
+residuals = y_test - predictions_test  
 plt.scatter(range(len(residuals)), residuals)
 plt.hlines(y=0, xmin=0, xmax=len(residuals), color='r', linestyle='--')
 plt.title("Resíduos - Diferença entre Previsões e Valores Reais")
 plt.xlabel("Amostras")
 plt.ylabel("Resíduos")
-plt.savefig("residuos.png")  # Salva o gráfico como um arquivo PNG
+plt.savefig("residuos.png")  
 plt.close()
 
 
